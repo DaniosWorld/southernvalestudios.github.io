@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Facebook Meta Tags (Most Important!) -->
+    <meta
+      property="og:title"
+      content="I scored 0 points in Ascend: Creature Evolution!"
+    />
+    <meta property="og:description" content="Can you beat my score? 🔥" />
+    <meta
+      property="og:image"
+      content="https://southernvalestudios.com/images/ascend-share-image.png"
+    />
+    <meta
+      property="og:url"
+      content="https://southernvalestudios.com/share-score.html"
+    />
+    <meta property="og:type" content="website" />
+
+    <title>Ascend: Creature Evolution - My Score</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        background: white;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .game-image {
+        width: 50%;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+      .score {
+        font-size: 28px;
+        color: #89d62d;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+      .play-button {
+        width: 20%;
+      }
+      .countdown {
+        color: #666;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- This is your share image - visible on the page -->
+      <img
+        src="https://southernvalestudios.com/ascend-creature-evolution.png"
+        alt="Game Banner"
+        class="game-image"
+      />
+
+      <div class="score" id="scoreDisplay">0 points</div>
+      <p>Can you beat this score?</p>
+
+      <a
+        href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
+        class="play-button"
+      >
+        <img
+          src="https://southernvalestudios.com/play_button_x3.png"
+          alt="Download Now"
+          class="game-image"
+        />
+      </a>
+
+      <!-- Countdown message -->
+      <p class="countdown" id="countdown">
+        Redirecting to Google Play in 5 seconds...
+      </p>
+    </div>
+
+    <script>
+      // Get score from URL (?score=XXX)
+      const urlParams = new URLSearchParams(window.location.search);
+      const score = urlParams.get("score") || "0";
+
+      // Update the displayed score
+      document.getElementById("scoreDisplay").textContent = `${score} points!`;
+
+      // Update Facebook meta tags
+      document.querySelector(
+        'meta[property="og:title"]'
+      ).content = `I scored ${score} points in Ascend: Creature Evolution!`;
+      document.querySelector(
+        'meta[property="og:description"]'
+      ).content = `Can you beat my score of ${score} points? 🔥`;
+      document.querySelector(
+        'meta[property="og:url"]'
+      ).content = `https://southernvalestudios.com/share-score.html?score=${score}`;
+
+      // Countdown and redirect
+      let seconds = 5;
+      const countdownElement = document.getElementById("countdown");
+      const countdownInterval = setInterval(() => {
+        seconds--;
+        countdownElement.textContent = `Redirecting to Google Play in ${seconds} seconds...`;
+
+        if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          window.location.href =
+            "https://play.google.com/store/apps/details?id=com.daniosworld.game2048";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
