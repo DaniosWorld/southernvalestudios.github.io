@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,8 @@
       content="https://southernvalestudios.com/share-score.html"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ascend: Creature Evolution" />
+    <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
 
     <title>Ascend: Creature Evolution - My Score</title>
 
@@ -94,8 +96,11 @@
       /* DYNAMIC META TAGS UPDATE */
       const metaTagsToUpdate = {
         "og:title": `I scored ${score} points in Ascend: Creature Evolution!`,
-        "og:description": `🏆 I just scored ${score} points in Ascend: Creature Evolution! Think you can beat my high score? Download now and try to top me! 🔥`,
+        "og:description": `🏆 I just scored ${score} points! Can you beat me? 🔥`,
         "og:url": `https://southernvalestudios.com/share-score.html?score=${score}`,
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": `Score of ${score} points in Ascend: Creature Evolution`,
       };
 
       // Update each meta tag
