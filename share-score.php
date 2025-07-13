@@ -1,23 +1,41 @@
+<?php
+  /* ----------------------------------------------------------
+     Ascend: Creature Evolution – share-score.php
+     ----------------------------------------------------------
+     Expected URL format:
+       https://southernvalestudios.com/share-score.php?score=1234
+  ----------------------------------------------------------- */
+
+  // 1) Read and sanitise the score from the query‑string
+  $score = isset($_GET['score']) ? intval($_GET['score']) : 0;
+
+  // 2) Build the canonical share URL for the og:url tag
+  $shareUrl = "https://southernvalestudios.com/share-score.php?score={$score}";
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Dynamic OG Tags (Initial values) -->
-    <meta property="og:title" content="Ascend: Creature Evolution Score" />
-    <meta property="og:description" content="Check out my high score!" />
+    <!-- ----------- SERVER‑RENDERED OPEN GRAPH TAGS ----------- -->
+    <meta
+      property="og:title"
+      content="I scored <?php echo $score; ?> points in Ascend: Creature Evolution!"
+    />
+    <meta
+      property="og:description"
+      content="🏆 Think you can beat <?php echo $score; ?> points? Download the game and try your luck!"
+    />
     <meta
       property="og:image"
       content="https://southernvalestudios.com/images/ascend-share-image.png"
     />
-    <meta
-      property="og:url"
-      content="https://southernvalestudios.com/share-score.html"
-    />
+    <meta property="og:url" content="<?php echo $shareUrl; ?>" />
     <meta property="og:type" content="website" />
+    <!-- ------------------------------------------------------- -->
 
-    <title>Ascend: Creature Evolution - My Score</title>
+    <title>Ascend: Creature Evolution – My Score</title>
 
     <style>
       body {
@@ -54,18 +72,24 @@
       }
     </style>
   </head>
+
   <body>
     <div class="container">
-      <!-- This is your share image - visible on the page -->
+      <!-- Share image shown on the actual page -->
       <img
         src="https://southernvalestudios.com/images/ascend-creature-evolution.png"
-        alt="Game Banner"
+        alt="Ascend – Creature Evolution Banner"
         class="game-image"
       />
 
-      <div class="score" id="scoreDisplay">0 points</div>
+      <!-- Visible score -->
+      <div class="score">
+        <?php echo $score; ?>
+        points!
+      </div>
       <p>Can you beat this score?</p>
 
+      <!-- Play‑store button -->
       <a
         href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
         class="play-button"
@@ -79,37 +103,18 @@
 
       <!-- Countdown message -->
       <p class="countdown" id="countdown">
-        Redirecting to Google Play in 5 seconds...
+        Redirecting to Google Play in&nbsp;5&nbsp;seconds…
       </p>
     </div>
 
     <script>
-      // Get score from URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const score = urlParams.get("score") || "0";
-
-      // Update visible content
-      document.getElementById("scoreDisplay").textContent = `${score} points!`;
-
-      /* DYNAMIC META TAGS UPDATE */
-      const metaTagsToUpdate = {
-        "og:title": `I scored ${score} points in Ascend: Creature Evolution!`,
-        "og:description": `🏆 I just scored ${score} points in Ascend: Creature Evolution! Think you can beat my high score? Download now and try to top me! 🔥`,
-        "og:url": `https://southernvalestudios.com/share-score.html?score=${score}`,
-      };
-
-      // Update each meta tag
-      Object.entries(metaTagsToUpdate).forEach(([property, content]) => {
-        const tag = document.querySelector(`meta[property="${property}"]`);
-        if (tag) tag.setAttribute("content", content);
-      });
-
-      // Countdown and redirect
+      /* ---------- Redirect after 5 seconds ---------- */
       let seconds = 5;
       const countdownElement = document.getElementById("countdown");
+
       const countdownInterval = setInterval(() => {
         seconds--;
-        countdownElement.textContent = `Redirecting to Google Play in ${seconds} seconds...`;
+        countdownElement.textContent = `Redirecting to Google Play in ${seconds} seconds…`;
 
         if (seconds <= 0) {
           clearInterval(countdownInterval);
