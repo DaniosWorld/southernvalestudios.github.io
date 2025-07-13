@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fallback OG tags (will be overwritten by JavaScript) -->
+    <!-- Dynamic OG Tags (Initial values) -->
     <meta property="og:title" content="Ascend: Creature Evolution Score" />
     <meta property="og:description" content="Check out my high score!" />
     <meta
@@ -16,13 +16,6 @@
       content="https://southernvalestudios.com/share-score.html"
     />
     <meta property="og:type" content="website" />
-
-    <!-- Important: Add canonical URL to help crawlers -->
-    <link
-      rel="canonical"
-      href="https://southernvalestudios.com/share-score.html"
-      id="canonicalUrl"
-    />
 
     <title>Ascend: Creature Evolution - My Score</title>
 
@@ -60,40 +53,10 @@
         margin-top: 20px;
       }
     </style>
-
-    <!-- Important: This script must run immediately in head -->
-    <script>
-      // Parse score from URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const score1 = urlParams.get("score") || "0";
-
-      // Update OG tags dynamically
-      const metaTags = {
-        "og:title": `I scored ${score1} points in Ascend: Creature Evolution!`,
-        "og:description": `🏆 I just scored ${score1} points! Can you beat my high score? Download now and try!`,
-        "og:url": `https://southernvalestudios.com/share-score.html?score=${score1}`,
-      };
-
-      // Update each meta tag
-      Object.entries(metaTags).forEach(([property, content]) => {
-        let tag = document.querySelector(`meta[property="${property}"]`);
-        if (!tag) {
-          tag = document.createElement("meta");
-          tag.setAttribute("property", property);
-          document.head.appendChild(tag);
-        }
-        tag.setAttribute("content", content);
-      });
-
-      // Update canonical URL
-      document.getElementById(
-        "canonicalUrl"
-      ).href = `https://southernvalestudios.com/share-score.html?score=${score}`;
-    </script>
   </head>
-
   <body>
     <div class="container">
+      <!-- This is your share image - visible on the page -->
       <img
         src="https://southernvalestudios.com/images/ascend-creature-evolution.png"
         alt="Game Banner"
@@ -114,18 +77,32 @@
         />
       </a>
 
+      <!-- Countdown message -->
       <p class="countdown" id="countdown">
         Redirecting to Google Play in 5 seconds...
       </p>
     </div>
 
     <script>
-      // Get score from URL (again for the visible content)
-      const score =
-        new URLSearchParams(window.location.search).get("score") || "0";
+      // Get score from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const score = urlParams.get("score") || "0";
 
       // Update visible content
       document.getElementById("scoreDisplay").textContent = `${score} points!`;
+
+      /* DYNAMIC META TAGS UPDATE */
+      const metaTagsToUpdate = {
+        "og:title": `I scored ${score} points in Ascend: Creature Evolution!`,
+        "og:description": `🏆 I just scored ${score} points in Ascend: Creature Evolution! Think you can beat my high score? Download now and try to top me! 🔥`,
+        "og:url": `https://southernvalestudios.com/share-score.html?score=${score}`,
+      };
+
+      // Update each meta tag
+      Object.entries(metaTagsToUpdate).forEach(([property, content]) => {
+        const tag = document.querySelector(`meta[property="${property}"]`);
+        if (tag) tag.setAttribute("content", content);
+      });
 
       // Countdown and redirect
       let seconds = 5;
