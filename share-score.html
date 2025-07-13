@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fallback OG tags (will be overwritten by JavaScript) -->
+    <meta property="og:title" content="Ascend: Creature Evolution Score" />
+    <meta property="og:description" content="Check out my high score!" />
+    <meta
+      property="og:image"
+      content="https://southernvalestudios.com/images/ascend-share-image.png"
+    />
+    <meta
+      property="og:url"
+      content="https://southernvalestudios.com/share-score.html"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Important: Add canonical URL to help crawlers -->
+    <link
+      rel="canonical"
+      href="https://southernvalestudios.com/share-score.html"
+      id="canonicalUrl"
+    />
+
+    <title>Ascend: Creature Evolution - My Score</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        background: white;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .game-image {
+        width: 45%;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+      .score {
+        font-size: 28px;
+        color: #89d62d;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+      .play-button {
+        width: 20%;
+      }
+      .countdown {
+        color: #666;
+        margin-top: 20px;
+      }
+    </style>
+
+    <!-- Important: This script must run immediately in head -->
+    <script>
+      // Parse score from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const score1 = urlParams.get("score") || "0";
+
+      // Update OG tags dynamically
+      const metaTags = {
+        "og:title": `I scored ${score1} points in Ascend: Creature Evolution!`,
+        "og:description": `🏆 I just scored ${score1} points! Can you beat my high score? Download now and try!`,
+        "og:url": `https://southernvalestudios.com/share-score.html?score=${score1}`,
+      };
+
+      // Update each meta tag
+      Object.entries(metaTags).forEach(([property, content]) => {
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+          tag = document.createElement("meta");
+          tag.setAttribute("property", property);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+      });
+
+      // Update canonical URL
+      document.getElementById(
+        "canonicalUrl"
+      ).href = `https://southernvalestudios.com/share-score.html?score=${score}`;
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <img
+        src="https://southernvalestudios.com/images/ascend-creature-evolution.png"
+        alt="Game Banner"
+        class="game-image"
+      />
+
+      <div class="score" id="scoreDisplay">0 points</div>
+      <p>Can you beat this score?</p>
+
+      <a
+        href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
+        class="play-button"
+      >
+        <img
+          src="https://southernvalestudios.com/images/play_button_x3.png"
+          alt="Download Now"
+          class="game-image"
+        />
+      </a>
+
+      <p class="countdown" id="countdown">
+        Redirecting to Google Play in 5 seconds...
+      </p>
+    </div>
+
+    <script>
+      // Get score from URL (again for the visible content)
+      const score =
+        new URLSearchParams(window.location.search).get("score") || "0";
+
+      // Update visible content
+      document.getElementById("scoreDisplay").textContent = `${score} points!`;
+
+      // Countdown and redirect
+      let seconds = 5;
+      const countdownElement = document.getElementById("countdown");
+      const countdownInterval = setInterval(() => {
+        seconds--;
+        countdownElement.textContent = `Redirecting to Google Play in ${seconds} seconds...`;
+
+        if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          window.location.href =
+            "https://play.google.com/store/apps/details?id=com.daniosworld.game2048";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
