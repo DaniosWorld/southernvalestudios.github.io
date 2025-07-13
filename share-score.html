@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Dynamic OG Tags (Initial values) -->
-    <meta property="og:title" content="Ascend: Creature Evolution Score" />
-    <meta property="og:description" content="Check out my high score!" />
+    <meta
+      property="og:title"
+      content="I scored [SCORE] points in Ascend: Creature Evolution!"
+    />
+    <meta
+      property="og:description"
+      content="🔥 Can you beat my score of [SCORE] points? Download now and try!"
+    />
     <meta
       property="og:image"
       content="https://southernvalestudios.com/images/ascend-share-image.png"
     />
     <meta
       property="og:url"
-      content="https://southernvalestudios.com/share-score.html"
+      content="https://southernvalestudios.com/share-score.html?score=[SCORE]"
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ascend: Creature Evolution" />
-    <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
+    <!-- FORCE FACEBOOK TO DISPLAY THIS -->
+    <meta property="og:image:alt" content="I scored [SCORE] points!" />
 
     <title>Ascend: Creature Evolution - My Score</title>
 
@@ -86,42 +93,20 @@
     </div>
 
     <script>
-      // Get score from URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const score = urlParams.get("score") || "0";
+      // Extract score from URL
+      const score =
+        new URLSearchParams(window.location.search).get("score") || "0";
 
-      // Update visible content
-      document.getElementById("scoreDisplay").textContent = `${score} points!`;
-
-      /* DYNAMIC META TAGS UPDATE */
-      const metaTagsToUpdate = {
-        "og:title": `I scored ${score} points in Ascend: Creature Evolution!`,
-        "og:description": `🏆 I just scored ${score} points! Can you beat me? 🔥`,
-        "og:url": `https://southernvalestudios.com/share-score.html?score=${score}`,
-        "og:image:width": "600",
-        "og:image:height": "315",
-        "og:image:alt": `Score of ${score} points in Ascend: Creature Evolution`,
-      };
-
-      // Update each meta tag
-      Object.entries(metaTagsToUpdate).forEach(([property, content]) => {
-        const tag = document.querySelector(`meta[property="${property}"]`);
-        if (tag) tag.setAttribute("content", content);
+      // REPLACE ALL [SCORE] PLACEHOLDERS IN META TAGS
+      document.querySelectorAll('meta[property^="og:"]').forEach((tag) => {
+        tag.content = tag.content.replace(/\[SCORE\]/g, score);
       });
 
-      // Countdown and redirect
-      let seconds = 5;
-      const countdownElement = document.getElementById("countdown");
-      const countdownInterval = setInterval(() => {
-        seconds--;
-        countdownElement.textContent = `Redirecting to Google Play in ${seconds} seconds...`;
-
-        if (seconds <= 0) {
-          clearInterval(countdownInterval);
-          window.location.href =
-            "https://play.google.com/store/apps/details?id=com.daniosworld.game2048";
-        }
-      }, 1000);
+      // Optional: Redirect after 3 sec (if you still want this)
+      setTimeout(() => {
+        window.location.href =
+          "https://play.google.com/store/apps/details?id=com.daniosworld.game2048";
+      }, 5000);
     </script>
   </body>
 </html>
