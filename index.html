@@ -3,87 +3,221 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Request Account Deletion - Magical 2048</title>
+    <title>SOUTHERN VALE STUDIOS ©</title>
     <style>
+      @font-face {
+        font-family: "Caramel-Mocachino";
+        src: url("/fonts/Bungee-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Caramel-Mocachino", "Segoe UI", Tahoma, Geneva, Verdana,
+          sans-serif;
         background-color: #fff;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         line-height: 1.6;
+        color: #333;
       }
       header {
         text-align: center;
-        margin-bottom: 20px;
+        padding: 30px 20px;
+        border-bottom: 3px solid #89d62d; /* added */
+        background: #f7fff0; /* added */
+      }
+      header img {
+        max-width: 120px;
+        height: auto;
+        margin-bottom: 10px;
       }
       h1 {
         margin: 0;
         font-size: 2em;
+        color: #333;
       }
-      .banner {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto 20px auto;
-        display: block;
+
+      /* Showcase */
+      .apps {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
       }
-      .content {
-        max-width: 800px;
-        margin: 0 auto;
-        display: flex;
-        align-items: flex-start;
+      .apps h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #89d62d; /* added */
+      }
+      .app-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
       }
-      .image-container {
-        flex: 1;
+      .app-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        transition: box-shadow 0.2s, border-color 0.2s; /* updated */
       }
-      .text-container {
-        flex: 2;
+      .app-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: #89d62d; /* added */
       }
-      p {
-        margin: 10px 0;
+      .app-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        margin-bottom: 10px;
+        border: 3px solid #89d62d; /* added */
       }
-      a {
-        color: #0066cc;
+      .app-card h3 {
+        margin: 10px 0 5px;
+      }
+      .app-card p {
+        font-size: 0.9em;
+        color: #666;
+      }
+      .app-card a {
+        display: inline-block;
+        margin-top: 8px;
+        color: #89d62d; /* changed */
         text-decoration: none;
+        font-weight: bold;
       }
-      a:hover {
+      .app-card a:hover {
         text-decoration: underline;
       }
-      ul {
+
+      /* News */
+      .news {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .news h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #89d62d; /* added */
+      }
+      .news-article {
+        margin-bottom: 20px;
+        border-left: 4px solid #89d62d; /* changed */
+        padding-left: 12px;
+      }
+      .news-article h3 {
+        margin: 0;
+      }
+      .news-article small {
+        color: #888;
+      }
+
+      /* Deletion */
+      .deletion {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f7fff0; /* added */
+        border-top: 3px solid #89d62d; /* changed */
+        border-radius: 10px; /* added */
+      }
+      .deletion h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #89d62d; /* added */
+      }
+      .deletion ul {
         padding-left: 20px;
+      }
+      .deletion a {
+        color: #89d62d; /* added */
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 0.85em;
+        color: #666;
+        border-top: 1px solid #eee;
+        background: #f7fff0; /* added */
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Magical 2048</h1>
+      <!-- Replace with your logo -->
+      <img src="logo.png" alt="My Logo" />
+      <h1>SOUTHERN VALE STUDIOS ©</h1>
     </header>
-    <img src="/graphic.png" alt="Magical 2048" class="banner" />
 
-    <div class="content">
-      <div class="image-container">
-        <img
-          src="/trash_x3.png"
-          alt="Request Account Deletion"
-          style="width: 100%; height: auto"
-        />
+    <!-- Apps Section -->
+    <section class="apps">
+      <h2>Our Apps</h2>
+      <div class="app-list">
+        <!-- Example App -->
+        <div class="app-card">
+          <img src="/images/CreaturesApp.png" alt="App 2" />
+          <h3>Ascend: Creature Evolution</h3>
+          <p>
+            Tap your way through endless obstacles in this fast-paced arcade
+            adventure!
+          </p>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.ascendcreatureevolution"
+            target="_blank"
+            >View on Google Play</a
+          >
+        </div>
+
+        <div class="app-card">
+          <img src="/images/2048App.png" alt="App 1" />
+          <h3>Magical 2048</h3>
+          <p>A fresh take on the classic 2048 puzzle with magical twists.</p>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
+            target="_blank"
+            >View on Google Play</a
+          >
+        </div>
+        <!-- Add more apps the same way -->
       </div>
-      <div class="text-container">
-        <h2>Request Account Deletion:</h2>
-        <ul>
-          <li>
-            To request deletion of your account and all associated data in
-            <strong>Magical 2048</strong> (username, avatar, leaderboard
-            entries), email us at
-            <a href="mailto:southernvalestudios@gmail.com"
-              >southernvalestudios@gmail.com</a
-            >
-            with the subject line "Delete My Account." Include your registered
-            email address for verification. Deletion will be completed within
-            <strong>30 days</strong>.
-          </li>
-        </ul>
+    </section>
+
+    <!-- News Section -->
+    <section class="news">
+      <h2>Latest News</h2>
+      <div class="news-article">
+        <h3>New Game in Development</h3>
+        <small>Published: Aug 25, 2025</small>
+        <p>
+          We’re working on a new exciting mobile game! Stay tuned for updates!
+        </p>
       </div>
-    </div>
+    </section>
+
+    <!-- Deletion Section -->
+    <section class="deletion">
+      <h2>Request Account Deletion</h2>
+      <p>
+        To request deletion of your account and all associated data in any of
+        our apps (username, avatar, leaderboard entries), please email us at
+        <a href="mailto:southernvalestudios@gmail.com"
+          >southernvalestudios@gmail.com</a
+        >
+        with the subject line <strong>"Delete My Account"</strong>.
+      </p>
+      <p>
+        Include your registered email address for verification. Deletion will be
+        completed within <strong>30 days</strong>.
+      </p>
+      <ul>
+        <li>Magical 2048</li>
+        <li>Ascend: Creature Evolution</li>
+      </ul>
+    </section>
+
+    <footer>&copy; 2025 SOUTHERN VALE STUDIOS. All rights reserved.</footer>
   </body>
 </html>
