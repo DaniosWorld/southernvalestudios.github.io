@@ -4,220 +4,755 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOUTHERN VALE STUDIOS ©</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-      @font-face {
-        font-family: "Caramel-Mocachino";
-        src: url("/fonts/Bungee-Regular.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
+      /* Modern CSS Variables */
+      :root {
+        --primary: #89d62d;
+        --primary-dark: #6bb320;
+        --secondary: #7b2cbf;
+        --dark: #121212;
+        --darker: #0a0a0a;
+        --light: #f7fff0;
+        --gray: #333;
+        --gray-light: #666;
+        --transition: all 0.3s ease;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        --radius: 12px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       body {
-        font-family: "Caramel-Mocachino", "Segoe UI", Tahoma, Geneva, Verdana,
-          sans-serif;
-        background-color: #fff;
-        margin: 0;
-        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--dark);
+        color: var(--light);
         line-height: 1.6;
-        color: #333;
-      }
-      header {
-        text-align: center;
-        padding: 30px 20px;
-        border-bottom: 3px solid #89d62d; /* added */
-        background: #f7fff0; /* added */
-      }
-      header img {
-        max-width: 120px;
-        height: auto;
-        margin-bottom: 10px;
-      }
-      h1 {
-        margin: 0;
-        font-size: 2em;
-        color: #333;
+        overflow-x: hidden;
       }
 
-      /* Showcase */
-      .apps {
-        max-width: 1000px;
-        margin: 40px auto;
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Caramel-Mocachino", "Segoe UI", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--light);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 0 20px;
       }
-      .apps h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #89d62d; /* added */
+
+      .section {
+        padding: 80px 0;
       }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background: linear-gradient(to bottom, var(--darker), transparent);
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      header.scrolled {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        padding: 15px 0;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        transition: var(--transition);
+      }
+
+      .logo-text {
+        font-family: "Caramel-Mocachino", sans-serif;
+        font-size: 1.5rem;
+        color: var(--light);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: var(--light);
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--light);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          var(--secondary) 0%,
+          transparent 50%
+        );
+        opacity: 0.2;
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, var(--primary), var(--light));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #ccc;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: var(--primary);
+        color: var(--darker);
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+      }
+
+      .btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(137, 214, 45, 0.3);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background: var(--primary);
+        color: var(--darker);
+      }
+
+      /* Apps Section */
+      .apps {
+        background: var(--darker);
+        position: relative;
+      }
+
+      .apps::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23333' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        z-index: 0;
+      }
+
       .app-list {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-card {
+        background: rgba(35, 35, 35, 0.6);
+        border-radius: var(--radius);
+        padding: 25px;
+        text-align: center;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .app-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+      }
+
+      .app-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .app-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        border: 3px solid var(--primary);
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .app-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .app-card h3 {
+        margin: 10px 0;
+        font-size: 1.5rem;
+      }
+
+      .app-card p {
+        color: #ccc;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .app-card .app-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+      }
+
+      .app-card .app-link:hover {
+        gap: 10px;
+      }
+
+      /* News Section */
+      .news {
+        background: var(--dark);
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .news-article {
+        background: rgba(40, 40, 40, 0.6);
+        border-radius: var(--radius);
+        padding: 25px;
+        transition: var(--transition);
+        border-left: 4px solid var(--primary);
+        backdrop-filter: blur(10px);
+      }
+
+      .news-article:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .news-article h3 {
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+      }
+
+      .news-article small {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      .news-article p {
+        margin-top: 15px;
+        color: #ccc;
+      }
+
+      /* Deletion Section */
+      .deletion {
+        background: linear-gradient(to bottom, var(--darker), var(--dark));
+        text-align: center;
+      }
+
+      .deletion-box {
+        background: rgba(30, 30, 30, 0.8);
+        border-radius: var(--radius);
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .deletion-box h2 {
+        margin-bottom: 20px;
+      }
+
+      .deletion-box p {
+        margin-bottom: 20px;
+        color: #ccc;
+      }
+
+      .deletion-box ul {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .deletion-box li {
+        background: rgba(137, 214, 45, 0.1);
+        padding: 8px 15px;
+        border-radius: 20px;
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      .deletion-email {
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--darker);
+        padding: 40px 0 20px;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .social-links {
+        display: flex;
         gap: 20px;
       }
-      .app-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 15px;
-        text-align: center;
-        transition: box-shadow 0.2s, border-color 0.2s; /* updated */
-      }
-      .app-card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: #89d62d; /* added */
-      }
-      .app-card img {
-        width: 80px;
-        height: 80px;
-        border-radius: 16px;
-        margin-bottom: 10px;
-        border: 3px solid #89d62d; /* added */
-      }
-      .app-card h3 {
-        margin: 10px 0 5px;
-      }
-      .app-card p {
-        font-size: 0.9em;
-        color: #666;
-      }
-      .app-card a {
-        display: inline-block;
-        margin-top: 8px;
-        color: #89d62d; /* changed */
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .app-card a:hover {
-        text-decoration: underline;
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--gray);
+        color: var(--light);
+        transition: var(--transition);
       }
 
-      /* News */
-      .news {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 0 20px;
-      }
-      .news h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #89d62d; /* added */
-      }
-      .news-article {
-        margin-bottom: 20px;
-        border-left: 4px solid #89d62d; /* changed */
-        padding-left: 12px;
-      }
-      .news-article h3 {
-        margin: 0;
-      }
-      .news-article small {
-        color: #888;
+      .social-links a:hover {
+        background: var(--primary);
+        color: var(--darker);
+        transform: translateY(-3px);
       }
 
-      /* Deletion */
-      .deletion {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-        background: #f7fff0; /* added */
-        border-top: 3px solid #89d62d; /* changed */
-        border-radius: 10px; /* added */
-      }
-      .deletion h2 {
-        margin-top: 0;
-        text-align: center;
-        color: #89d62d; /* added */
-      }
-      .deletion ul {
-        padding-left: 20px;
-      }
-      .deletion a {
-        color: #89d62d; /* added */
-        font-weight: bold;
+      .copyright {
+        color: var(--gray-light);
+        font-size: 0.9rem;
       }
 
-      footer {
-        text-align: center;
-        padding: 15px;
-        font-size: 0.85em;
-        color: #666;
-        border-top: 1px solid #eee;
-        background: #f7fff0; /* added */
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: var(--darker);
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero-title {
+          font-size: 2.3rem;
+        }
+
+        .hero-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .btn-outline {
+          margin-left: 0;
+        }
+
+        .app-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .deletion-box {
+          padding: 25px;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <!-- Replace with your logo -->
-      <img src="logo.png" alt="My Logo" />
-      <h1>SOUTHERN VALE STUDIOS ©</h1>
+    <!-- Header & Navigation -->
+    <header id="header">
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="logo.png" alt="Southern Vale Studios Logo" />
+          <span class="logo-text">SOUTHERN VALE STUDIOS</span>
+        </div>
+        <nav>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#apps">Our Apps</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <!-- Apps Section -->
-    <section class="apps">
-      <h2>Our Apps</h2>
-      <div class="app-list">
-        <!-- Example App -->
-        <div class="app-card">
-          <img src="/images/CreaturesApp.png" alt="App 2" />
-          <h3>Ascend: Creature Evolution</h3>
-          <p>
-            Tap your way through endless obstacles in this fast-paced arcade
-            adventure!
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Crafting Digital Experiences</h1>
+          <p class="hero-subtitle">
+            We create engaging mobile games and applications that captivate
+            users and deliver exceptional digital experiences.
           </p>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.ascendcreatureevolution"
-            target="_blank"
-            >View on Google Play</a
-          >
+          <div class="hero-buttons">
+            <a href="#apps" class="btn">Explore Our Apps</a>
+            <a href="#news" class="btn btn-outline">Latest News</a>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="app-card">
-          <img src="/images/2048App.png" alt="App 1" />
-          <h3>Magical 2048</h3>
-          <p>A fresh take on the classic 2048 puzzle with magical twists.</p>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
-            target="_blank"
-            >View on Google Play</a
-          >
+    <!-- Apps Section -->
+    <section class="section apps" id="apps">
+      <div class="container">
+        <h2 class="section-title">Our Apps</h2>
+        <div class="app-list">
+          <div class="app-card">
+            <img
+              src="/images/CreaturesApp.png"
+              alt="Ascend: Creature Evolution"
+            />
+            <h3>Ascend: Creature Evolution</h3>
+            <p>
+              Tap your way through endless obstacles in this fast-paced arcade
+              adventure! Evolve your creatures and unlock new abilities.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.ascendcreatureevolution"
+              target="_blank"
+              class="app-link"
+            >
+              View on Google Play <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="app-card">
+            <img src="/images/2048App.png" alt="Magical 2048" />
+            <h3>Magical 2048</h3>
+            <p>
+              A fresh take on the classic 2048 puzzle with magical twists and
+              enchanting visuals. Challenge your mind with this addictive game.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.daniosworld.game2048"
+              target="_blank"
+              class="app-link"
+            >
+              View on Google Play <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
-        <!-- Add more apps the same way -->
       </div>
     </section>
 
     <!-- News Section -->
-    <section class="news">
-      <h2>Latest News</h2>
-      <div class="news-article">
-        <h3>New Game in Development</h3>
-        <small>Published: Aug 25, 2025</small>
-        <p>
-          We’re working on a new exciting mobile game! Stay tuned for updates!
-        </p>
+    <section class="section news" id="news">
+      <div class="container">
+        <h2 class="section-title">Latest News</h2>
+        <div class="news-grid">
+          <div class="news-article">
+            <h3>New Game in Development</h3>
+            <small>Published: Aug 25, 2025</small>
+            <p>
+              We're working on a new exciting mobile game that will
+              revolutionize the flappy-style arcade genre! Stay tuned for
+              updates and behind-the-scenes content.
+            </p>
+          </div>
+          <div class="news-article">
+            <h3>Studio Expansion</h3>
+            <small>Published: Jun 5, 2025</small>
+            <p>
+              Southern Vale Studios is growing! We've welcomed new talented
+              developers and UI/UX designers to our team to bring you even
+              better gaming experiences.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Deletion Section -->
-    <section class="deletion">
-      <h2>Request Account Deletion</h2>
-      <p>
-        To request deletion of your account and all associated data in any of
-        our apps (username, avatar, leaderboard entries), please email us at
-        <a href="mailto:southernvalestudios@gmail.com"
-          >southernvalestudios@gmail.com</a
-        >
-        with the subject line <strong>"Delete My Account"</strong>.
-      </p>
-      <p>
-        Include your registered email address for verification. Deletion will be
-        completed within <strong>30 days</strong>.
-      </p>
-      <ul>
-        <li>Magical 2048</li>
-        <li>Ascend: Creature Evolution</li>
-      </ul>
+    <section class="section deletion" id="contact">
+      <div class="container">
+        <div class="deletion-box">
+          <h2>Request Account Deletion</h2>
+          <p>
+            To request deletion of your account and all associated data in any
+            of our apps (username, avatar, leaderboard entries), please follow
+            the instructions below.
+          </p>
+
+          <ul>
+            <li>Magical 2048</li>
+            <li>Ascend: Creature Evolution</li>
+          </ul>
+
+          <p>
+            Email us at
+            <a
+              href="mailto:southernvalestudios@gmail.com"
+              class="deletion-email"
+              >southernvalestudios@gmail.com</a
+            >
+            with the subject line <strong>"Delete My Account"</strong>.
+          </p>
+          <p>
+            Include your registered email address for verification. Deletion
+            will be completed within <strong>30 days</strong>.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <footer>&copy; 2025 SOUTHERN VALE STUDIOS. All rights reserved.</footer>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div> -->
+          <p class="copyright">
+            &copy; 2025 SOUTHERN VALE STUDIOS. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Close mobile menu if open
+            navLinks.classList.remove("active");
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
