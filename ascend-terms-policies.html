@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Privacy - SOUTHERN VALE STUDIOS</title>
+
+    <!-- OG Tags for social sharing -->
+    <meta
+      property="og:title"
+      content="Terms & Privacy - SOUTHERN VALE STUDIOS"
+    />
+    <meta
+      property="og:image"
+      content="https://southernvalestudios.com/images/logo.png"
+    />
+    <meta
+      property="og:url"
+      content="https://southernvalestudios.com/ascend-terms-policies"
+    />
+    <meta property="og:type" content="website" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* === COPY ALL CSS FROM YOUR MAIN WEBSITE === */
+      :root {
+        --primary: #89d62d;
+        --primary-dark: #6bb320;
+        --secondary: #7b2cbf;
+        --dark: #121212;
+        --darker: #0a0a0a;
+        --light: #f7fff0;
+        --gray: #333;
+        --gray-light: #666;
+        --transition: all 0.3s ease;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        --radius: 12px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--dark);
+        color: var(--light);
+        line-height: 1.6;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Caramel-Mocachino", "Segoe UI", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      a {
+        text-decoration: none;
+        color: var(--primary);
+        transition: var(--transition);
+      }
+      a:hover {
+        color: var(--light);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .section {
+        padding: 80px 0;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background: linear-gradient(to bottom, var(--darker), transparent);
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: var(--transition);
+      }
+      header.scrolled {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        padding: 15px 0;
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .logo img {
+        width: 50px;
+        height: 50px;
+        transition: var(--transition);
+      }
+      .logo-text {
+        font-family: "Caramel-Mocachino", sans-serif;
+        font-size: 1.5rem;
+        color: var(--light);
+      }
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+      .nav-links a {
+        color: var(--light);
+        font-weight: 500;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--light);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Terms Content Box */
+      .content-box {
+        background: rgba(30, 30, 30, 0.8);
+        border-radius: var(--radius);
+        padding: 40px;
+        max-width: 900px;
+        margin: 80px auto 80px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+      .content-box h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .content-box p {
+        margin-bottom: 15px;
+        color: #ccc;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--darker);
+        padding: 40px 0 20px;
+        text-align: center;
+      }
+      .copyright {
+        color: var(--gray-light);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .mobile-menu-btn {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header id="header">
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="logo.png" alt="Southern Vale Studios Logo" />
+          <span class="logo-text">SOUTHERN VALE STUDIOS</span>
+        </div>
+        <nav>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="/terms">Terms & Privacy</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Terms & Privacy Section -->
+    <section class="section">
+      <div class="container">
+        <div class="content-box">
+          <h2>Terms & Conditions for Ascend: Creature Evolution</h2>
+
+          <p><strong>Last Updated:</strong> 16.08.2025</p>
+
+          <h3>1. Acceptance of Terms</h3>
+          <p>
+            By using <strong>Ascend: Creature Evolution</strong>, you agree to
+            these Terms. If you disagree, do not use the app.
+          </p>
+
+          <h3>2. Definitions</h3>
+          <ul>
+            <li><strong>User:</strong> Anyone who accesses the app.</li>
+            <li>
+              <strong>Services:</strong> Playing the Ascend: Creature Evolution
+              game and participating in leaderboards.
+            </li>
+            <li>
+              <strong>User Account:</strong> Created via Google Sign-In
+              (Firebase), requiring a username and avatar.
+            </li>
+          </ul>
+          <br />
+
+          <h3>3. Using the App</h3>
+          <ul>
+            <li>
+              <strong>Eligibility:</strong> Ascend: Creature Evolution is
+              intended for users aged 13 and older. By using this app, you
+              confirm you are at least 13 years old.
+            </li>
+            <li>
+              <strong>Account Responsibility:</strong> You are responsible for
+              your username/avatar (no offensive content).
+            </li>
+            <li>
+              <strong>Age Verification:</strong> By creating an account, you
+              confirm you are at least 13 years old. Accounts found to belong to
+              underage users will be terminated.
+            </li>
+            <li>
+              <strong>Prohibited Actions:</strong> No cheating, hacking, or
+              spamming leaderboards.
+            </li>
+            <li>
+              <strong>Internet Requirement:</strong> The app requires an active
+              internet connection for all features, including gameplay
+              synchronization and leaderboard updates. The app may not function
+              properly offline.
+            </li>
+          </ul>
+          <br />
+
+          <h3>4. Leaderboards</h3>
+          <ul>
+            <li>
+              Publicly displays usernames and avatars only (no
+              emails/countries).
+            </li>
+            <li>We may remove inappropriate content without notice.</li>
+          </ul>
+
+          <h3>5. Ads</h3>
+          <p>AdMob serves ads; we do not control ad content.</p>
+          <br />
+
+          <h3>6. Disclaimers</h3>
+          <ul>
+            <li>
+              <strong>No Warranty:</strong> The app is provided "as is." We are
+              not liable for:
+              <ul>
+                <li>Game interruptions due to loss of internet connection.</li>
+                <li>
+                  Data loss or synchronization issues caused by network
+                  problems.
+                </li>
+                <li>User conduct on leaderboards.</li>
+              </ul>
+            </li>
+          </ul>
+          <br />
+
+          <h3>7. Account Deletion</h3>
+          <ul>
+            <li>
+              Users may request permanent deletion of their account and data by
+              emailing
+              <a href="mailto:southernvalestudios@gmail.com"
+                >southernvalestudios@gmail.com</a
+              >.
+            </li>
+            <li>Leaderboard entries will be removed upon account deletion.</li>
+            <li>Deletion requests are processed within 30 days.</li>
+          </ul>
+          <br />
+
+          <h3>8. Changes to Terms</h3>
+          <p>We may update these Terms. Continued use means acceptance.</p>
+
+          <h3>Contact</h3>
+          <p>
+            Email:
+            <a href="mailto:southernvalestudios@gmail.com"
+              >southernvalestudios@gmail.com</a
+            >
+          </p>
+
+          <br />
+        </div>
+        <div class="content-box">
+          <h2>Privacy Policy for Ascend: Creature Evolution</h2>
+
+          <p><strong>Last Updated:</strong> 16.08.2025</p>
+
+          <h3>1. Data We Collect</h3>
+          <ul>
+            <li>
+              <strong>Google Account Info:</strong> Email and profile data (via
+              Firebase Auth) for login.
+            </li>
+            <li>
+              <strong>User-Chosen Data:</strong> Username, avatar, and country
+              (for leaderboards); data is stored using Google Firebase in
+              accordance with Firebase’s Privacy Policy.
+            </li>
+            <li>
+              <strong>Crash Reports:</strong> Anonymous crash data may be
+              collected via Firebase Crashlytics to improve app stability.
+            </li>
+            <li>
+              <strong>Ads:</strong> AdMob collects:
+              <ul>
+                <li>Device information (e.g., OS version, device model).</li>
+                <li>Advertising ID (for personalized ads).</li>
+                <li>IP address (for ad targeting).</li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            <em>Note:</em> All features require internet connectivity. Data
+            synchronization occurs only when online.
+          </p>
+          <br />
+
+          <h3>2. How We Use Your Data</h3>
+          <ul>
+            <li>To authenticate users via Google Sign-In.</li>
+            <li>To display usernames and avatars on leaderboards.</li>
+            <li>To serve ads using Google AdMob.</li>
+            <li>To improve app stability using anonymous crash reports.</li>
+          </ul>
+          <br />
+
+          <h3>3. Data Sharing</h3>
+          <ul>
+            <li><strong>Google Firebase:</strong> Stores user data.</li>
+            <li>
+              <strong>AdMob:</strong> Used for ads, following Google’s Ad
+              Policies.
+            </li>
+            <li>
+              We do not sell or share your data with third parties for marketing
+              or profiling.
+            </li>
+          </ul>
+          <br />
+
+          <h3>4. Your Rights</h3>
+          <ul>
+            <li>
+              <strong>Account Deletion:</strong>
+              <ul>
+                <li>
+                  To request deletion of your account and all associated data
+                  (username, avatar, leaderboard entries), email us at
+                  <a href="mailto:southernvalestudios@gmail.com"
+                    >southernvalestudios@gmail.com</a
+                  >
+                  with the subject line "Delete My Account."
+                </li>
+                <li>
+                  Include your registered email address for verification.
+                  Deletion will be completed within 30 days.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Ad Personalization Opt-Out:</strong> You can reset or
+              disable personalized ads in your device’s privacy settings:
+              <ul>
+                <li>
+                  <strong>Android:</strong> Settings → Google → Ads → Reset
+                  advertising ID;
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <br />
+
+          <h3>5. Data Retention</h3>
+          <ul>
+            <li>
+              <strong>User Account Data:</strong> Retained until you request
+              deletion.
+            </li>
+            <li>
+              <strong>Crash Reports:</strong> Stored indefinitely in anonymized
+              form.
+            </li>
+            <li>
+              <strong>AdMob Data:</strong> Governed by Google’s retention
+              policies.
+            </li>
+          </ul>
+          <br />
+
+          <h3>6. Data Security</h3>
+          <p>
+            Security measures are implemented, such as encrypted data transfer
+            and authentication protocols through Firebase to protect your
+            personal information.
+          </p>
+          <br />
+
+          <h3>7. Children’s Privacy</h3>
+          <ul>
+            <li>
+              Ascend: Creature Evolution is not intended for children under 13.
+            </li>
+            <li>
+              We do not knowingly collect personal data from children under 13.
+            </li>
+            <li>
+              If we become aware that a child has submitted personal information
+              without consent, we will delete it promptly.
+            </li>
+          </ul>
+          <br />
+
+          <h3>Contact</h3>
+          <p>
+            Email:
+            <a href="mailto:southernvalestudios@gmail.com"
+              >southernvalestudios@gmail.com</a
+            >
+          </p>
+          <br />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="copyright">
+          &copy; 2025 SOUTHERN VALE STUDIOS. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>
